@@ -149,6 +149,10 @@ animation-delay: .3s;
   }
 
   .hero-cta {
+   opacity: 0;
+transform: translateY(30px);
+animation: fadeUp 1s ease forwards;
+animation-delay: .6s;
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
@@ -415,7 +419,17 @@ animation-delay: .3s;
   }
 
   footer span { color: var(--accent); }
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   @media (max-width: 520px) {
     .about-grid { grid-template-columns: 1fr; }
     .about-block.wide { grid-column: 1; }
