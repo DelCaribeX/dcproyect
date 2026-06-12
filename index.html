@@ -149,14 +149,15 @@ animation-delay: .3s;
   }
 
   .hero-cta {
-   opacity: 0;
-transform: translateY(30px);
-animation: fadeUp 1s ease forwards;
-animation-delay: .6s;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: .6s;
+}
 
   .btn {
     display: inline-flex;
@@ -419,6 +420,7 @@ animation-delay: .6s;
   }
 
   footer span { color: var(--accent); }
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -430,7 +432,8 @@ animation-delay: .6s;
     transform: translateY(0);
   }
 }
-  @media (max-width: 520px) {
+
+@media (max-width: 520px) {
     .about-grid { grid-template-columns: 1fr; }
     .about-block.wide { grid-column: 1; }
     .hero-name { font-size: 3rem; }
