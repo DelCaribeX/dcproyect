@@ -432,19 +432,16 @@ animation-delay: .3s;
   }
 
   footer span { color: var(--accent); }
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .8s ease, transform .8s ease;
 }
 
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 @media (max-width: 520px) {
     .about-grid { grid-template-columns: 1fr; }
     .about-block.wide { grid-column: 1; }
@@ -482,7 +479,7 @@ animation-delay: .3s;
 <div class="divider"></div>
 
 <!-- INTERESES -->
-<section class="section" id="intereses">
+<section class="section reveal" id="intereses">
   <p class="section-label">Universo</p>
   <div class="interests-grid">
     <div class="interest-card">
@@ -551,7 +548,7 @@ animation-delay: .3s;
 <div class="divider"></div>
 
 <!-- SOBRE MÍ -->
-<section class="section" id="sobre-mi">
+<section class="section reveal" id="sobre-mi">
   <p class="section-label">Sobre mí</p>
   <div class="about-grid">
     <div class="about-block wide">
@@ -582,7 +579,7 @@ animation-delay: .3s;
 <div class="divider"></div>
 
 <!-- CONTACTO -->
-<section class="section" id="contacto">
+<section class="section reveal" id="contacto">
   <p class="section-label">Contacto</p>
   <div class="contact-row">
     <div class="contact-text">
@@ -605,7 +602,9 @@ animation-delay: .3s;
 <div id="progress"></div>
 
 <script>
+ 
 window.addEventListener('scroll', () => {
+
   const winScroll =
     document.documentElement.scrollTop ||
     document.body.scrollTop;
@@ -618,7 +617,23 @@ window.addEventListener('scroll', () => {
 
   document.getElementById('progress').style.width =
     scrolled + '%';
+
 });
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, {
+  threshold: 0.15
+});
+
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+
 </script>
 
 </body>
