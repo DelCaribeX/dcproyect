@@ -1,661 +1,504 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<title>DelCaribe | Portafolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html {
-    scroll-behavior: smooth;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 15px;
-    line-height: 1.6;
-    min-height: 100vh;
+html{
+    scroll-behavior:smooth;
 }
-  :root {
-    --bg: #0A0A0A;
-    --surface: #141414;
-    --surface2: #1C1C1C;
-    --border: rgba(255,255,255,0.07);
-    --border-md: rgba(255,255,255,0.13);
-    --text: #E8E8E8;
-    --muted: #666;
-    --muted2: #999;
-    --accent: #C8A96E;
-    --accent-dim: rgba(200,169,110,0.12);
-    --accent-dim2: rgba(200,169,110,0.06);
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
-  }
 
-  #progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-box-shadow: 0 0 10px rgba(200,169,110,.7);
-  width: 0%;
-  background: #C8A96E;
-  z-index: 9999;
-  transition: width 0.1s linear;
+:root{
+    --bg:#0A0A0A;
+    --surface:#141414;
+    --surface2:#1C1C1C;
+
+    --text:#E8E8E8;
+    --muted:#9A9A9A;
+
+    --gold:#C8A96E;
+
+    --border:rgba(255,255,255,.08);
+
+    --font-title:'Space Grotesk',sans-serif;
+    --font-body:'Inter',sans-serif;
 }
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+}
+
+/* BARRA SUPERIOR */
+
+#progress{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:4px;
+    background:var(--gold);
+    z-index:99999;
+    box-shadow:0 0 12px rgba(200,169,110,.7);
+}
+
+/* NAV */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    height:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 2rem;
+
+    background:rgba(10,10,10,.9);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid var(--border);
+
+    z-index:999;
+}
+
+.logo{
+    font-family:var(--font-title);
+    text-decoration:none;
+    color:white;
+    font-weight:700;
+}
+
+.logo span{
+    color:var(--gold);
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:1.5rem;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--muted);
+    transition:.3s;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    max-width:900px;
+
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    padding:120px 2rem 60px;
+}
+
+.hero-tag{
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:.75rem;
+    margin-bottom:1rem;
+}
+
+.hero h1{
+    font-family:var(--font-title);
+    font-size:clamp(4rem,8vw,7rem);
+    line-height:.9;
+    margin-bottom:2rem;
+
+    animation:fadeUp 1s ease forwards;
+}
+
+.hero h1 span{
+    color:var(--gold);
+}
+
+.hero p{
+    max-width:600px;
+    color:var(--muted);
+
+    font-size:1.1rem;
+
+    animation:fadeUp 1s ease forwards;
+}
+
+.hero-buttons{
+    margin-top:2rem;
+
+    display:flex;
+    gap:1rem;
+
+    animation:fadeUp 1s ease forwards;
+}
+
+.btn{
+    text-decoration:none;
+
+    padding:.9rem 1.4rem;
+
+    border-radius:5px;
+
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--gold);
+    color:black;
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+}
+
+.btn-outline{
+    border:1px solid var(--border);
+    color:white;
+}
+
+/* SECCIONES */
+
+.section{
+    max-width:900px;
+    margin:auto;
+    padding:100px 2rem;
+}
+
+.section-title{
+    margin-bottom:2rem;
+
+    color:var(--gold);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+}
+
+/* TARJETAS */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(200px,1fr));
+
+    gap:1rem;
+}
+
+.card{
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    padding:1.5rem;
+
+    border-radius:10px;
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    background:var(--surface2);
+}
+
+.card h3{
+    margin-bottom:.5rem;
+}
+
+.card p{
+    color:var(--muted);
+}
+
+/* CONTACTO */
+
+.contact{
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    padding:2rem;
+}
+
+.contact-links{
+    margin-top:1rem;
+
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--border);
+
+    padding:2rem;
+
+    text-align:center;
+
+    color:var(--muted);
+}
+
+/* ANIMACIONES */
+
 @keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
 
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
 .reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:all .8s ease;
+    opacity:0;
+    transform:translateY(40px);
+    transition:.8s;
 }
 
 .reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.6;
-  min-height: 100vh;
-  }
-
-  /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    height: 52px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    text-decoration: none;
-  }
-
-  .nav-logo span { color: var(--accent); }
-
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--text); }
-
-  /* HERO */
-  .hero {
-    padding: 6rem 2rem 5rem;
-    max-width: 780px;
-    margin: 0 auto;
-  }
-
-  .hero-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .hero-name {
-    opacity: 0;
-transform: translateY(30px);
-animation: fadeUp 1s ease forwards;
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    font-weight: 700;
-    line-height: 0.92;
-    letter-spacing: -0.04em;
-    color: var(--text);
-    margin-bottom: 2rem;
-  }
-
-  .hero-name .accent { color: var(--accent); }
-
-  .hero-bio {
-   opacity: 0;
-transform: translateY(30px);
-animation: fadeUp 1s ease forwards;
-animation-delay: .3s;
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--muted2);
-    max-width: 480px;
-    line-height: 1.75;
-    border-left: 1px solid var(--border-md);
-    padding-left: 1.25rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-bio strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .hero-cta {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1s ease forwards;
-  animation-delay: .6s;
+    opacity:1;
+    transform:translateY(0);
 }
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-    font-family: var(--font-body);
-  }
+@media(max-width:768px){
 
-  .btn-primary {
-    background: var(--accent);
-    color: #0A0A0A;
-  }
+    nav ul{
+        gap:.8rem;
+        font-size:.9rem;
+    }
 
-  .btn-primary:hover { background: #D4B87A; }
+    .hero{
+        text-align:center;
+    }
 
-  .btn-ghost {
-    background: transparent;
-    border: 1px solid var(--border-md);
-    color: var(--muted2);
-  }
+    .hero-buttons{
+        justify-content:center;
+    }
 
-  .btn-ghost:hover {
-    border-color: var(--border-md);
-    color: var(--text);
-    background: var(--surface);
-  }
-
-  /* DIVIDER */
-  .divider {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    border-top: 1px solid var(--border);
-  }
-
-  /* SECTION */
-  .section {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 3.5rem 2rem;
-  }
-
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 500;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* INTERESTS GRID — catálogo de coleccionista */
-  .interests-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .interest-card {
-    background: var(--surface);
-    padding: 1.25rem 1rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    transition: background 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .interest-card:hover { background: var(--surface2); }
-
-  .interest-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    height: 2px;
-    width: 100%;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s ease;
-  }
-
-  .interest-card:hover::after { transform: scaleX(1); }
-
-  .interest-icon {
-    font-size: 20px;
-    margin-bottom: 4px;
-    opacity: 0.85;
-  }
-
-  .interest-tag {
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 500;
-  }
-
-  .interest-name {
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-
-  .interest-desc {
-    font-size: 11.5px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  /* ABOUT */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .about-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
-  }
-
-  .about-block.wide {
-    grid-column: 1 / -1;
-  }
-
-  .about-block-label {
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-  }
-
-  .about-block p {
-    font-size: 14px;
-    color: var(--muted2);
-    line-height: 1.75;
-  }
-
-  .about-block p strong { color: var(--text); font-weight: 500; }
-
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 0.5rem;
-  }
-
-  .tag {
-    background: var(--accent-dim2);
-    border: 1px solid rgba(200,169,110,0.2);
-    color: var(--accent);
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 2px;
-    letter-spacing: 0.04em;
-    font-weight: 500;
-  }
-
-  /* CONTACT */
-  .contact-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 2rem;
-  }
-
-  .contact-text h3 {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 4px;
-  }
-
-  .contact-text p {
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  .contact-links {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border: 1px solid var(--border-md);
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--muted2);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: all 0.2s;
-  }
-
-  .contact-link:hover {
-    color: var(--accent);
-    border-color: rgba(200,169,110,0.4);
-    background: var(--accent-dim2);
-  }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 1.5rem 2rem;
-    max-width: 780px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  footer p {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  footer span { color: var(--accent); }
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity .8s ease, transform .8s ease;
 }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (max-width: 520px) {
-    .about-grid { grid-template-columns: 1fr; }
-    .about-block.wide { grid-column: 1; }
-    .hero-name { font-size: 3rem; }
-    nav { padding: 0 1rem; }
-    .hero, .section { padding-left: 1.25rem; padding-right: 1.25rem; }
-  }
 </style>
+
 </head>
+
 <body>
-
-<nav>
-  <a href="#" class="nav-logo">Del<span>Caribe</span></a>
-  <ul class="nav-links">
-    <li><a href="#intereses">Intereses</a></li>
-    <li><a href="#sobre-mi">Sobre mí</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <p class="hero-eyebrow">Portafolio personal</p>
-  <h1 class="hero-name">Del<br><span class="accent">Caribe</span></h1>
-  <p class="hero-bio">
-    Coleccionista de mundos. <strong>Música, anime, literatura, terror, códigos.</strong>
-    Encuentro patrones donde los demás ven caos — ya sea en la historia, en una pista, o en un bug a las 3am.
-  </p>
-  <div class="hero-cta">
-    <a href="#sobre-mi" class="btn btn-primary">Conocerme</a>
-    <a href="#contacto" class="btn btn-ghost">Hablemos</a>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- INTERESES -->
-<section class="section reveal" id="intereses">
-  <p class="section-label">Universo</p>
-  <div class="interests-grid">
-    <div class="interest-card">
-      <div class="interest-icon">🎵</div>
-      <p class="interest-tag">Sonido</p>
-      <p class="interest-name">Música</p>
-      <p class="interest-desc">Distintos géneros, un solo idioma.</p>
-    </div>
-    <div class="interest-card">
-      <div class="interest-icon">⛩</div>
-      <p class="interest-tag">Cultura</p>
-      <p class="interest-name">Anime</p>
-      <p class="interest-desc">Arte, narrativa y filosofía en movimiento.</p>
-    </div>
-    <div class="interest-card">
-      <div class="interest-icon">📖</div>
-      <p class="interest-tag">Letras</p>
-      <p class="interest-name">Literatura</p>
-      <p class="interest-desc">Corrientes artísticas, no solo páginas.</p>
-    </div>
-    <div class="interest-card">
-      <div class="interest-icon">🏛</div>
-      <p class="interest-tag">Tiempo</p>
-      <p class="interest-name">Historia</p>
-      <p class="interest-desc">Entender el presente leyendo el pasado.</p>
-    </div>
-    <div class="interest-card">
-      <div class="interest-icon">🏍</div>
-      <p class="interest-tag">Velocidad</p>
-      <p class="interest-name">Motos</p>
-      <p class="interest-desc">Libertad sobre dos ruedas.</p>
-    </div>
-    <div class="interest-card">
-      <div class="interest-icon">🎮</div>
-      <p class="interest-tag">Mundos</p>
-      <p class="interest-name">Videojuegos</p>
-      <p class="interest-desc">Narrativa interactiva llevada al límite.</p>
-    </div>
-    <div class="interest-card">
-      <div class="interest-icon">🕳</div>
-      <p class="interest-tag">Psique</p>
-      <p class="interest-name">Terror</p>
-      <p class="interest-desc">Horror psicológico y misterios de la red.</p>
-    </div>
-    <div class="interest-card">
-      <div class="interest-icon">🚗</div>
-      <p class="interest-tag">Colección</p>
-      <p class="interest-name">Autos 1:64</p>
-      <p class="interest-desc">Diseño en miniatura, precisión a escala.</p>
-    </div>
-    <div class="interest-card">
-      <div class="interest-icon">💻</div>
-      <p class="interest-tag">Build</p>
-      <p class="interest-name">Programación</p>
-      <p class="interest-desc">Aprendiendo a construir con código.</p>
-    </div>
-    <div class="interest-card">
-      <div class="interest-icon">🖋</div>
-      <p class="interest-tag">Arte</p>
-      <p class="interest-name">Randoms</p>
-      <p class="interest-desc">La piel como lienzo permanente.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SOBRE MÍ -->
-<section class="section reveal" id="sobre-mi">
-  <p class="section-label">Sobre mí</p>
-  <div class="about-grid">
-    <div class="about-block wide">
-      <p class="about-block-label">Quién soy</p>
-      <p>
-        Soy <strong>DelCaribe</strong> — alguien que vive entre épocas y formatos.
-        No colecciono cosas al azar: cada interés tiene un hilo conector.
-        El terror psicológico y la historia comparten la misma pregunta: <strong>¿por qué los humanos hacemos lo que hacemos?</strong>
-        Los autos a escala y el anime tienen la misma respuesta: el detalle importa.
-      </p>
-    </div>
-    <div class="about-block">
-      <p class="about-block-label">Skills</p>
-      <div class="tag-list">
-        <span class="tag">HTML / CSS</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">Git</span>
-        <span class="tag">Curiosidad</span>
-      </div>
-    </div>
-    <div class="about-block">
-      <p class="about-block-label">Actualmente</p>
-      <p>Iniciando en programación, construyendo proyectos pequeños y explorando la web.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CONTACTO -->
-<section class="section reveal" id="contacto">
-  <p class="section-label">Contacto</p>
-  <div class="contact-row">
-    <div class="contact-text">
-      <h3>Hablemos</h3>
-      <p>Siempre abierto a buenas conversaciones.</p>
-    </div>
-    <div class="contact-links">
-      <a href="#" class="contact-link">✉ Email</a>
-      <a href="#" class="contact-link">↗ Twitter</a>
-      <a href="#" class="contact-link">↗ GitHub</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 <span>DelCaribe</span>. Todos los derechos reservados.</p>
-  <p style="font-size:11px;">Construido con intención bitch.</p>
-</footer>
 
 <div id="progress"></div>
 
+<nav>
+
+<a href="#" class="logo">
+Del<span>Caribe</span>
+</a>
+
+<ul>
+<li><a href="#intereses">Intereses</a></li>
+<li><a href="#sobre">Sobre mí</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-tag">
+PORTAFOLIO PERSONAL
+</div>
+
+<h1>
+Del<br>
+<span>Caribe</span>
+</h1>
+
+<p>
+Coleccionista de mundos. Música, anime, literatura, terror, historia, tecnología y programación.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#sobre" class="btn btn-primary">
+Conocerme
+</a>
+
+<a href="#contacto" class="btn btn-outline">
+Hablemos
+</a>
+
+</div>
+
+</section>
+
+<section id="intereses" class="section reveal">
+
+<h2 class="section-title">
+Universo
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🎵 Música</h3>
+<p>Exploración constante de géneros y sonidos.</p>
+</div>
+
+<div class="card">
+<h3>⛩ Anime</h3>
+<p>Arte, narrativa y cultura japonesa.</p>
+</div>
+
+<div class="card">
+<h3>📖 Literatura</h3>
+<p>Historias, ideas y filosofía.</p>
+</div>
+
+<div class="card">
+<h3>🏛 Historia</h3>
+<p>Comprender el presente estudiando el pasado.</p>
+</div>
+
+<div class="card">
+<h3>🎮 Videojuegos</h3>
+<p>Narrativas interactivas y creatividad.</p>
+</div>
+
+<div class="card">
+<h3>💻 Programación</h3>
+<p>Construyendo proyectos y aprendiendo tecnología.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="sobre" class="section reveal">
+
+<h2 class="section-title">
+Sobre mí
+</h2>
+
+<div class="card">
+
+<p>
+Soy DelCaribe. Me apasiona aprender, crear y conectar ideas entre diferentes mundos: historia, tecnología, arte y cultura digital.
+</p>
+
+</div>
+
+</section>
+
+<section id="contacto" class="section reveal">
+
+<h2 class="section-title">
+Contacto
+</h2>
+
+<div class="contact">
+
+<p>
+Siempre abierto a nuevas conversaciones y proyectos.
+</p>
+
+<div class="contact-links">
+
+<a href="#" class="btn btn-primary">
+Email
+</a>
+
+<a href="#" class="btn btn-outline">
+GitHub
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 DelCaribe — Todos los derechos reservados.
+</footer>
+
 <script>
- 
-window.addEventListener('scroll', () => {
 
-  const winScroll =
-    document.documentElement.scrollTop ||
-    document.body.scrollTop;
+/* BARRA DE PROGRESO */
 
-  const height =
-    document.documentElement.scrollHeight -
-    document.documentElement.clientHeight;
+window.addEventListener("scroll",()=>{
 
-  const scrolled = (winScroll / height) * 100;
+const scrollTop=
+document.documentElement.scrollTop;
 
-  document.getElementById('progress').style.width =
-    scrolled + '%';
+const scrollHeight=
+document.documentElement.scrollHeight-
+document.documentElement.clientHeight;
+
+const progress=
+(scrollTop/scrollHeight)*100;
+
+document.getElementById("progress")
+.style.width=progress+"%";
 
 });
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-    }
-  });
-}, {
-  threshold: 0.15
+/* REVEAL */
+
+const observer=
+new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("active");
+
+}
+
 });
 
-document.querySelectorAll('.reveal').forEach(el => {
-  observer.observe(el);
-});
+},{threshold:.15});
+
+document
+.querySelectorAll(".reveal")
+.forEach(el=>observer.observe(el));
 
 </script>
+
 </body>
 </html>
- 
