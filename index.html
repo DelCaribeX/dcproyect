@@ -23,7 +23,16 @@
     --font-body: 'Inter', sans-serif;
   }
 
-  body {
+  body {#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #C8A96E;
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
     background: var(--bg);
     color: var(--text);
     font-family: var(--font-body);
