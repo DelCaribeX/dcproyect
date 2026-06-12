@@ -23,7 +23,6 @@
     --font-body: 'Inter', sans-serif;
   }
 
-  body {
   #progress {
   position: fixed;
   top: 0;
@@ -34,12 +33,14 @@
   z-index: 9999;
   transition: width 0.1s linear;
 }
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 15px;
-    line-height: 1.6;
-    min-height: 100vh;
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
   }
 
   /* NAV */
@@ -567,6 +568,10 @@
 
 <body>
 
+<footer>
+  ...
+</footer>
+
 <div id="progress"></div>
 
 <script>
@@ -588,4 +593,3 @@ window.addEventListener('scroll', () => {
 
 </body>
 </html>
-
