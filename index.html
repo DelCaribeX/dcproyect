@@ -114,6 +114,9 @@ body {
   }
 
   .hero-name {
+    opacity: 0;
+transform: translateY(30px);
+animation: fadeUp 1s ease forwards;
     font-family: var(--font-display);
     font-size: clamp(3rem, 8vw, 5.5rem);
     font-weight: 700;
@@ -126,6 +129,10 @@ body {
   .hero-name .accent { color: var(--accent); }
 
   .hero-bio {
+   opacity: 0;
+transform: translateY(30px);
+animation: fadeUp 1s ease forwards;
+animation-delay: .3s;
     font-size: 16px;
     font-weight: 300;
     color: var(--muted2);
